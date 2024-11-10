@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--{% if my_var == 'stefan' %}-->
+<!--    <h1>Hello {{ my_var }}</h1>-->
+<!--{% else %}-->
+<!--    <h1>user necunoscut</h1>-->
+<!--{% endif %}-->
+
+<h2>Filtru</h2>
+<nav>
+    <ul>
+        <li><a href="?rating=2"><em> Filmele cele mai bune </em></a></li>
+        <li><a href="?an=2023"><em> Filmele cele mai noi </em></a></li>
+    </ul>
+</nav>
+<ul>
+    {% for gen in genre %}
+        <a href="{% url 'genre' gen.slug %}"><b> {{ gen.name }} </b></a>
+    {% endfor %}
+
+</ul>
+
+<h1>Filmele mele preferate</h1>
+
+<ul>
+    {% for film in filme %}
+        <li> <a href="{% url 'film' film.slug %}"> {{ film.title }} -- {{ film.slug }} </a></li>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}
+
+
+

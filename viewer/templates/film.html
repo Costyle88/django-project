@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>
+    {{ film.title }}
+</h1>
+
+<h2>
+    {{ film.genre }}
+</h2>
+<p>
+    Anul lansarii: {{ film.released.year }}
+</p>
+
+<p>
+    Rating: {{ film.rating }}
+</p>
+<br>
+<p>
+    Despre ce e vorba: <br>{{ film.description }}
+</p>
+
+{% endblock %}
+
+
+
