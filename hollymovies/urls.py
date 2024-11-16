@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path
 
 from viewer.views import home, film, genre
+from hollymagazines.views import list_reviste_pub, revista_detail, list_reviste
+
+
 
 
 urlpatterns = [
@@ -27,9 +30,12 @@ urlpatterns = [
     # path('hello/<s>/<other_s>', hello)
 
     # Parametrii cu URL Encoding
+    # path('', home, name='home'),
+
     path('', home, name='home'),
-
     path('film/<slug:my_slug>/', film, name='film'),
-
-    path('gen/<slug:my_slug>/', genre, name='genre')
+    path('gen/<slug:my_slug>/', genre, name='genre'),
+    path('reviste/', list_reviste, name='list_reviste'),
+    path('reviste_detalii/<slug:slug>', revista_detail, name='revista_detail'),
+    path('reviste/<str:pub_name>', list_reviste_pub, name='list_reviste_pub'),
 ]

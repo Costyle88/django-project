@@ -11,12 +11,14 @@
 <nav>
     <ul>
         <li><a href="?rating=2"><em> Filmele cele mai bune </em></a></li>
-        <li><a href="?an=2023"><em> Filmele cele mai noi </em></a></li>
+        <li><a href="?an=2022"><em> Filmele cele mai noi </em></a></li>
     </ul>
 </nav>
 <ul>
     {% for gen in genre %}
-        <a href="{% url 'genre' gen.slug %}"><b> {{ gen.name }} </b></a>
+        {% if gen.slug %}
+            <li><a href="{% url 'genre' gen.slug %}"><b>{{ gen.name }}</b></a></li>
+        {% endif %}
     {% endfor %}
 
 </ul>

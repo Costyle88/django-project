@@ -22,32 +22,33 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container fixed">
-        <a class="navbar-brand" href="">HollyMovies</a>
+        <a class="navbar-brand" href="{% url 'home' %}">HollyMagazines</a>
         <button
                 class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#navbarNavAltMarkup"
         >
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse mt-7" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="">
+                <a class="nav-item nav-link active" href="{% url 'home' %}">
                     Home
                 </a>
-                <a class="nav-item nav-link active" href="">
-                    Film
+                <a class="nav-item nav-link active" href="{% url 'list_reviste' %}">
+                    Reviste
                 </a>
             </div>
         </div>
 
     </div>
-</nav>
+    </nav>
 <div class="container">
-    <div class="jumbotron">
-        {% block content %}{% endblock %}
+    <div class="row">
+        <div class="col-md-8">
+        {% block content %} {% endblock %}
+        </div>
     </div>
 </div>
 </body>
 
 </html>
-

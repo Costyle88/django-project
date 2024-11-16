@@ -48,7 +48,7 @@ def home(request):
 
     genre = Genre.objects.all()
 
-    rating = request.GET.get('rating','')
+    rating = request.GET.get('rating','') # Parametrii dupa ? din url
     if rating != '':
         try:
             rating = float(rating)

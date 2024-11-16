@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>
+    {{ revista.title }}
+</h1>
+
+<h2>
+    {{ revista.publicatie.nume }}
+</h2>
+
+<p>
+    Despre ce e vorba: <br>{{ revista.description }}
+</p>
+
+<a href="{% url 'lista_reviste' %}">Înapoi la lista revistelor</a>
+
+{% endblock %}
+
+
+
