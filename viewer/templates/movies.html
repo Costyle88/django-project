@@ -6,9 +6,10 @@
 <ul> {% for movie in object_list %}
     <li>
         <a href="{% url 'movie-detail' movie.slug %}"> {{ movie.title }} ({{ movie.released.year }}) - {{ movie.genre.name }} - Actori principali:
-        {% for actor in movie.actors.all %} {{ actor.name }}{% if not forloop.last %},
-            {% endif %}</a>
-        {% endfor %}
+        {% for actor in movie.actors.all %}
+            {{ actor.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </a>
     </li>
     {% endfor %}
 </ul>

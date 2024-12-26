@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Titlu: {{ object.title }}</h1>
-<p>Descriere: {{ object.description }}</p>
-<p>Actori:</p>
-<ul> {% for actor in object.actors.all %}
-    <li>{{ actor.name }}</li>
+<h1>Titlu: {{ movie.title }}</h1>
+<p>Data lansarii: {{ movie.released }}</p>
+<p>Descriere: {{ movie.description }}</p>
+<h2>Actori:</h2>
+<ul> {% for movieactor in movieactors %}
+    <li>{{ movieactor.actor.name }} as {{ movieactor.role }}</li>
     {% endfor %}
 </ul>
 

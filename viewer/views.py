@@ -37,9 +37,15 @@ class MoviesView(ListView):
 class MoviesViewDetail(PermissionRequiredMixin, DetailView):
     template_name = 'movies_detail.html'
     model = Movie
+    context_object_name = 'movie'
 
     # pentru numele permisiunilor: '<nume-app>.<actiuni>_<nume-model>'
     permission_required = 'viewer.view_movie'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['actors'] = self.object.movieactor_set.all()
+        return context
 
 class GenreMoviesView(ListView):
     template_name = 'movies.html'

@@ -12,20 +12,6 @@ class Genre(Model):
     def __str__(self):
         return self.name
 
-class Actor(models.Model):
-    name = models.CharField(max_length=100)
-    biography = models.TextField()
-    birth_date = models.DateField()
-    EYE_COLOR_CHOICES = [
-        ('blue', 'Blue'),
-        ('green', 'Green'),
-        ('hazel', 'Hazel'),
-        ('dark', 'Dark'),
-    ]
-    eye_color = models.CharField(max_length=5, choices=EYE_COLOR_CHOICES)
-
-    def __str__(self):
-        return self.name
 
 class Movie(Model):
     title = CharField(max_length=128)
@@ -35,14 +21,38 @@ class Movie(Model):
     description = TextField()
     created = DateTimeField(auto_now_add=True)
     slug = SlugField(unique=True, editable=False)
-    actors = models.ManyToManyField(Actor, related_name='movies')
-
-
+    actors = models.ManyToManyField('Actor', related_name='movies')
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
+
+class Actor(models.Model):
+    name = models.CharField(max_length=100)
+    biography = models.TextField()
+    birth_date = models.DateField()
+    EYE_COLOR_CHOICES = [
+        ('blue', 'Blue'),
+        ('green', 'Green'),
+        ('hazel', 'Hazel'),
+        ]
+    eye_color = models.CharField(max_length=5, choices=EYE_COLOR_CHOICES)
+
+    def __str__(self):
+        return self.name
+
+
+
+
+class MovieActor(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    actor = models.ForeignKey(Actor, on_delete=models.CASCADE)
+    role = models.CharField(max_length=100) # Optional: pentru a specifica rolul actorului în film
+
+    def __str__(self):
+        return f"{self.actor.name} in {self.movie.title} as {self.role}"
+
 
 
