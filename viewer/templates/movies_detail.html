@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Titlu: {{ object.title }}</h1>
+<p>Descriere: {{ object.description }}</p>
+<p>Actori:</p>
+<ul> {% for actor in object.actors.all %}
+    <li>{{ actor.name }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
